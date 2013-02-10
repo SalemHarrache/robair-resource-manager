@@ -16,12 +16,12 @@ Activer le virtualenv avant de continuer:
 
 ::
 
-    ./manager.py initdb -c dev
+    ./manager.py initdb
 
 
 ::
 
-    ./manager.py runserver -c dev
+    ./manager.py runserver
      * Running on http://127.0.1.1:9090/
      * Restarting with reloader
 
