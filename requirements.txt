@@ -1,0 +1,5 @@
+Flask==0.9
+Flask-SQLAlchemy==0.16
+Flask-Script==0.5.2
+Flask-Security==1.5.4
+gevent==0.13.8
