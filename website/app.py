@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import division, unicode_literals
 
+import datetime
+
 from flask import Flask
 from flask.ext.security import login_required
 from .extensions import db, security
@@ -13,6 +15,12 @@ def configured_app(app, config):
     db.init_app(app)
     # Setup Flask-Security
     security.init_app(app, user_datastore)
+
+    # Setup app context
+    @app.context_processor
+    def inject_date():
+        ''' Add context variable. '''
+        return dict(now=datetime.datetime.now)
     if app.debug or app.testing:
         @app.errorhandler(400)
         def handle_bad_request_in_debug(exception):

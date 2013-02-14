@@ -1,0 +1,25 @@
+{% extends "_layout.jinja2" %}
+
+{% block content %}
+{% from "security/_macros.html" import render_field_with_errors, render_field, render_field_submit %}
+{% include "security/_messages.html" %}
+
+<div class="container">
+    <article class="connection">
+        <h2 class="arrow-title">Login</h2>
+
+        <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+            <fieldset style="padding-right: 15px;">
+              {{ login_user_form.hidden_tag() }}
+              {{ render_field_with_errors(login_user_form.email) }}
+              {{ render_field_with_errors(login_user_form.password) }}
+              {{ render_field_with_errors(login_user_form.remember) }}
+              {{ render_field(login_user_form.next) }}
+              {{ render_field_submit(login_user_form.submit) }}
+            </fieldset>
+        </form>
+    </article>
+</div>
+
+{% include "security/_menu.html" %}
+{% endblock content %}

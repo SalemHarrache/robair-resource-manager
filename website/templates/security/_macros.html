@@ -1,0 +1,20 @@
+{% macro render_field_with_errors(field) %}
+<div class="control-group {% if field.errors %}error{% endif %}">
+  {{ field.label }} {{ field(**kwargs)|safe }}
+  {% for error in field.errors %}
+    <span class="help-inline">{{ error }}</span>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro render_field(field) %}
+<div class="control-group">
+  {{ field(**kwargs)|safe }}
+</div>
+{% endmacro %}
+
+{% macro render_field_submit(field) %}
+<div class="control-group">
+  {{ field(class_="btn btn-primary btn-large btn-login",**kwargs)|safe }}
+</div>
+{% endmacro %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+<title>{% block subtitle %}{% endblock subtitle %}{% block title %}Robair 2013 resource manager{% endblock title %}</title>
+<meta name="description" content="{% block description %}{{ config.SITE_DESCRIPTION }}{% endblock description %}" />
+<meta name="author" content="Salem Harrache" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"  media="screen" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"  media="screen" />
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+{% block head %}{% endblock head %}
+</head>
+
+<body>
+<section>
+  {% block content %}{% endblock content %}
+</section>
+<footer>
+  <a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013">Robair</a> {{ now().year }}
+</footer>
+
+</body>
+</html>

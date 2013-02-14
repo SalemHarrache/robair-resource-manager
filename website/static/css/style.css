@@ -1,0 +1,181 @@
+/* Login */
+
+/* Form */
+article.connection form {
+    padding: 0;
+    text-align: center;
+}
+
+article.connection form > * {
+    margin: 0 auto;
+    text-align: left;
+    width: 90%;
+}
+
+article.connection form fieldset {
+    border: solid 1px #CCC;
+    border-radius: 10px;
+    margin-right: 11px;
+    margin: auto;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+article.connection input[type="checkbox"],
+article.connection input[type="radio"] {
+    background: none;
+    border: none;
+    display: inline-block;
+    font-size: inherit;
+    margin: 0 0.5em 0 5%;
+    width: auto;
+    height: 2em;
+    padding: 0;
+    *height: 1em;
+    *margin-bottom: 0.5em;
+}
+
+article.connection input[type="text"],input[type="password"]  {
+    width: 95%;
+}
+
+article.connection label {
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 0;
+    line-height: 2em;
+}
+
+article.connection label a {
+    margin: 0 5px;
+}
+
+article.connection label.required:after {
+    content: ' *';
+}
+
+article.connection fieldset {
+    border-width: 0;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 1.1em;
+}
+
+
+
+article.connection .form-horizontal .control-group {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+article.connection .form-horizontal .control-label {
+    float: none;
+    width: 100%;
+    padding-top: 0px;
+    text-align: left;
+}
+
+article.connection .form-horizontal .controls {
+    margin-left: 0px;
+}
+
+article.connection .form-horizontal .controls ul {
+    margin-bottom: 0;
+}
+
+
+article.connection form.icon {
+    margin: 0 0 0;
+    width: 30px;
+    margin:auto;
+}
+
+article.connection form.icon button {
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    padding: 0;
+    line-height: normal;
+}
+
+article.connection form.icon button {
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    padding: 0;
+    line-height: normal;
+}
+
+
+article.connection {
+    margin:auto;
+    width: 420px;
+}
+
+section.connection {
+    width: 420px;
+    margin: auto;
+}
+
+/* H2 form */
+h2.arrow-title {
+    margin-left:20px;
+    padding:0 10px 0 12px;
+    background:#B94A48;
+    color:#fff;
+    text-decoration:none;
+    display: inline-block;
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.arrow-title:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #B94A48;
+    float: right;
+    margin-right: -30px;
+}
+
+.arrow-title:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #B94A48;
+    float: right;
+    margin-right: -30px;
+}
+
+.btn-login {
+    float:right;
+    margin-bottom: 15px;
+}
+
+/* - Footer - */
+footer {
+    width: 100%;
+    background: none;
+    color: #9f9f9f;
+    font-size: 0.85em;
+    margin: 15px 0;
+    text-align: center;
+    clear: both;
+}
+
+footer a {
+    color: #9f9f9f;
+    margin: 0 4px;
+}
+
+footer a:hover, a:focus {
+    color: #797979;
+}
