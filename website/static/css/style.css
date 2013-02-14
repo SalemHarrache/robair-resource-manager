@@ -155,6 +155,25 @@ h2.arrow-title {
     margin-right: -30px;
 }
 
+
+
+/* Form customizations */
+form.icon {
+    display: inline;
+}
+
+form.icon button {
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    padding: 0;
+    line-height: normal;
+}
+
+a.icon {
+    text-decoration: none;
+}
+
 .btn-login {
     float:right;
     margin-bottom: 15px;
