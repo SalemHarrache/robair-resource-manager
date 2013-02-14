@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+import datetime
+import uuid
 from flask.ext.security import UserMixin, RoleMixin, SQLAlchemyUserDatastore
 from .extensions import db
+from .utils import dump_datetime
 
 
 # Define models
@@ -29,10 +31,31 @@ class User(db.Model, UserMixin):
 
 
 class Reservation(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     start = db.Column(db.DateTime())
     end = db.Column(db.DateTime())
     key = db.Column(db.UnicodeText())
+
+    @classmethod
+    def new(cls, key=None):
+        start = datetime.datetime.now()
+        end = datetime.datetime.now() + datetime.timedelta(seconds=999999)
+        new_item = cls(start=start, end=end, key=key)
+        db.session.add(new_item)
+        db.session.commit()
+        if key is None:
+            new_item.key = u"%s%s" % (new_item.id, str(uuid.uuid4()))
+            db.session.merge(new_item)
+            db.session.commit()
+        return new_item
+
+    @property
+    def serialized(self):
+        '''Return object data in easily serializeable format'''
+        return {'id': self.id,
+                'start': dump_datetime(self.start),
+                'end': dump_datetime(self.end),
+                'key': self.key}
 
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
