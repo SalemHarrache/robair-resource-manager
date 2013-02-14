@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 import datetime
 
-from flask import Flask, redirect, url_for
+from flask import Flask, render_template
 
 from .extensions import db, security
 from .model import user_datastore
@@ -28,7 +28,7 @@ def configured_app(app, config):
     # Default index page
     @app.route('/')
     def index():
-        return redirect(url_for('admin.index'))
+        return render_template('index.html')
     # Add views
     register_blueprints(app)
 
