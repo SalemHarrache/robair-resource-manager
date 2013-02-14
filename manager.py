@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from flask import current_app, url_for
+from flask import current_app
 from flask_script import Manager, prompt_bool
 from werkzeug.contrib.fixers import ProxyFix
 from gevent.wsgi import WSGIServer
 
-from website.model import User
-from website.app import app, db, configured_app
+from website import app, db, configured_app
 from website.config import DevConfig, ProdConfig
 from website.data import init_database
+from website.model import User, Role
 
 
 def create_app_manager(config):
@@ -34,7 +34,7 @@ def initdb():
 
 @manager.shell
 def make_shell_context():
-    return dict(app=current_app, db=db, User=User)
+    return dict(app=current_app, db=db, User=User, Role=Role)
 
 
 manager.add_option('-c', '--config',
