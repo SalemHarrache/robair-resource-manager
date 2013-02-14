@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 
 class DevConfig(object):
     '''Dev configuration.'''
 
     SERVER_PATH = "http://localhost"
-    SECRET_KEY = "secret"
+    SECRET_KEY = "secret_key"
+    SECURITY_PASSWORD_HASH = 'bcrypt'
+    SECURITY_PASSWORD_SALT = 'security_salt'
 
     SQLALCHEMY_ECHO = True
-
     # SQLite Database
     SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/robair-portal.db'
 
@@ -22,8 +22,6 @@ class DevConfig(object):
 
 class ProdConfig(DevConfig):
     '''Prod configuration.'''
-
-    SECRET_KEY = "my_super_secret_key"
 
     SQLALCHEMY_ECHO = False
 
