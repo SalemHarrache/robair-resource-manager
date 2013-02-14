@@ -27,11 +27,14 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
 
-    def __str__(self):
-        return '%s %s' % (self.__class__.__name__, self.email)
+
+class Reservation(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    start = db.Column(db.DateTime())
+    end = db.Column(db.DateTime())
+    key = db.Column(db.UnicodeText())
 
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-
 
 __all__ = [Role, User, user_datastore]
