@@ -9,8 +9,8 @@ from gevent.wsgi import WSGIServer
 
 from website import app, db, configured_app
 from website.config import DevConfig, ProdConfig
-from website.data import init_database
-from website.model import User, Role
+from website.data import populate_data
+from website.model import User
 
 
 def create_app_manager(config):
@@ -29,12 +29,12 @@ def initdb():
     if prompt_bool("Are you sure you want to lose all your data"):
         db.drop_all()
         db.create_all()
-        init_database()
+        populate_data()
 
 
 @manager.shell
 def make_shell_context():
-    return dict(app=current_app, db=db, User=User, Role=Role)
+    return dict(app=current_app, db=db, User=User)
 
 
 manager.add_option('-c', '--config',

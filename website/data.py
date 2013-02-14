@@ -6,13 +6,22 @@ from .extensions import db
 from .model import user_datastore
 
 
-def init_users():
-    """Initializes users data"""
-    # db.create_all()
-    user_datastore.create_user(email='admin',
-                               password=encrypt_password('admin'))
+def create_roles():
+    user_datastore.create_role(name="admin")
+    user_datastore.create_role(name="reader")
     db.session.commit()
 
 
-def init_database(*args, **kwargs):
-    init_users()
+def create_users():
+    user_datastore.create_user(email="admin", active=True,
+                               password=encrypt_password("admin"),
+                               roles=['admin'])
+    user_datastore.create_user(email="user", active=True,
+                               password=encrypt_password("user"),
+                               roles=['reader'])
+    db.session.commit()
+
+
+def populate_data(*args, **kwargs):
+    create_roles()
+    create_users()
