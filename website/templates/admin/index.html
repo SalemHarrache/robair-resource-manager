@@ -2,22 +2,6 @@
 
 {% block content %}
 
-<div class="container">
-
-<div class="tabbable">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="{{ url_for('admin.index') }}" data-toggle="tab">Admin</a></li>
-    <li><a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013" data-toggle="tab">Présentation du projet</a></li>
-    <li><a href="https://github.com/SalemHarrache/robair-resource-manager" data-toggle="tab">Github</a></li>
-    <!-- <li><a   class="btn-primary"href="/logout" data-toggle="tab">Logout</a></li> -->
-    <li class="pull-right">
-        <form style="margin: 0 0 0px;" method="GET" action="/logout">
-            <button style="margin-top:3px" class="btn btn-danger" type="submit">Logout</button>
-        </form>
-    </li>
-  </ul>
-</div>
-
 <table class="table table-striped table-bordered model-list">
     <thead>
         <tr>

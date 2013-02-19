@@ -1,17 +1,6 @@
 {% extends "_layout.jinja2" %}
 
 {% block content %}
-
-
-
-<div class="container">
-<div class="tabbable">
-  <ul class="nav nav-tabs">
-    <li><a href="{{ url_for('admin.index') }}" data-toggle="tab">Admin</a></li>
-    <li><a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013" data-toggle="tab">Présentation du projet</a></li>
-    <li><a href="https://github.com/SalemHarrache/robair-resource-manager" data-toggle="tab">Github</a></li>
-  </ul>
-</div>
 <div style="text-align:center">
     <img src="{{ url_for('static', filename='img/robair-logo.png') }}" alt="robair {{ now().year }} logo" />
 </div>
