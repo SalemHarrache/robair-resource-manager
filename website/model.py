@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import datetime
 import uuid
 from flask.ext.security import UserMixin, RoleMixin, SQLAlchemyUserDatastore
+from sqlalchemy.ext.hybrid import hybrid_property
 from .extensions import db
 from .utils import dump_datetime
 
@@ -34,13 +35,29 @@ class Reservation(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     start = db.Column(db.DateTime())
     end = db.Column(db.DateTime())
+    jid = db.Column(db.String(255))
     key = db.Column(db.UnicodeText())
 
+    @hybrid_property
+    def started(self):
+        now = datetime.datetime.now()
+        return self.start >= now
+
+    @hybrid_property
+    def expired(self):
+        now = datetime.datetime.now()
+        return self.end < now
+
     @classmethod
-    def new(cls, key=None):
+    def new(cls, jid, key=None):
         start = datetime.datetime.now()
-        end = datetime.datetime.now() + datetime.timedelta(seconds=999999)
-        new_item = cls(start=start, end=end, key=key)
+        end = start + datetime.timedelta(seconds=999999)
+        new_item = cls.query.filter_by(jid=jid).first()
+        if new_item:
+            if not new_item.expired:
+                return new_item
+        else:
+            new_item = cls(start=start, end=end, jid=jid, key=key)
         db.session.add(new_item)
         db.session.commit()
         if key is None:
@@ -55,7 +72,10 @@ class Reservation(db.Model):
         return {'id': self.id,
                 'start': dump_datetime(self.start),
                 'end': dump_datetime(self.end),
-                'key': self.key}
+                'jid': self.jid,
+                'key': self.key,
+                'started': self.started,
+                'expired': self.expired}
 
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)

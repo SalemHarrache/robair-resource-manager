@@ -23,8 +23,8 @@ def create_users():
 
 
 def create_reservations():
-    Reservation.new("88d259c8e-3733-41fa-9e7b-37ab2b85e3df")
-    Reservation.new("102746da82-6f18-48fb-b4cf-e1ddff441e9d")
+    Reservation.new('tv@im.quicker.fr', '88d258e-3733-41fa-9e7b-37ab2b85e3df')
+    # Reservation.new('tv2@im.quicker.fr', '102746d2-6f18-48fb-b4cf-e1ddff441e9')
     db.session.commit()
 
 
