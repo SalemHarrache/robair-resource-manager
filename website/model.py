@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 import datetime
 import uuid
 from flask.ext.security import UserMixin, RoleMixin, SQLAlchemyUserDatastore
+from sqlalchemy import func
 from sqlalchemy.ext.hybrid import hybrid_property
 from .extensions import db
-from .utils import dump_datetime
+from .utils import dump_datetime, ClassProperty
 
 
 # Define models
@@ -48,9 +49,18 @@ class Reservation(db.Model):
         now = datetime.datetime.now()
         return self.end < now
 
+    @ClassProperty
+    @classmethod
+    def availability(self):
+        item = db.session.query(func.max(Reservation.end)).first()
+        if item and item[0]:
+            return item[0] + datetime.timedelta(seconds=60)
+        else:
+            return datetime.datetime.now()
+
     @classmethod
     def new(cls, jid, key=None):
-        start = datetime.datetime.now()
+        start = cls.availability
         end = start + datetime.timedelta(seconds=999999)
         new_item = cls.query.filter_by(jid=jid).first()
         if new_item:

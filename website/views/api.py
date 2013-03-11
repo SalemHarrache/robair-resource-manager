@@ -24,7 +24,6 @@ def check():
     key = request.values.get('key', None)
     if key:
         r = Reservation.query.filter_by(key=key).first()
-        r.availability
         if r is not None:
             return jsonify(dict(r.serialized.items() + [("valid", True)]))
     return jsonify(valid=False)

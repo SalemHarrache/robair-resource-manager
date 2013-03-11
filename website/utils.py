@@ -18,3 +18,8 @@ def is_valid_email(email):
             if re.match(regex, email):
                 return 1
     return 0
+
+
+class ClassProperty(property):
+    def __get__(self, cls, owner):
+        return self.fget.__get__(None, owner)()
