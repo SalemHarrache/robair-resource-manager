@@ -1,4 +1,4 @@
-Portail de réservation HTTP pour le projet Robair 2013.
+HTTP resource manager for 2013 Robair project.
 
 Demo : http://robair.quicker.fr
 
@@ -11,18 +11,20 @@ Installation
     make setup
 
 
-Activer le virtualenv avant de continuer:
+Activate your virtualenv before going to the next step
 
 
 ::
 
     source ./env/bin/activate
 
+Now, create database using the script manager
 
 ::
 
     ./manager.py initdb
 
+Let's start !
 
 ::
 
@@ -34,32 +36,85 @@ Activer le virtualenv avant de continuer:
 Test
 ====
 
-New reservation:
+Resource reservation:
+---------------------
 
 ::
 
-    $ curl http://127.0.0.1:9090/api/new
+    $ curl http://127.0.0.1:9090/api/new?jid=test@test.com
     {
-      "start": [
-        "2013-02-14",
-        "20:57:58"
-      ],
+      "jid": "test@test.com",
       "end": [
-        "2013-02-26",
-        "10:44:37"
+        "2013-03-23",
+        "13:44:17"
       ],
-      "id": 2,
-      "key": "215a3bf96-f937-4c55-a2e1-5fa00e996a3e",
-      "error": false
+      "started": false,
+      "start": [
+        "2013-03-11",
+        "23:57:38"
+      ],
+      "key": "1bde8bac8-f654-42d5-aa6f-558b790d7cc3",
+      "error": false,
+      "expired": false,
+      "id": 1
     }
 
-Check your key:
+Another reservation starts after the last one:
 
 ::
 
-    $ curl http://127.0.0.1:9090/api/check?key=215a3bf96-f937-4c55-a2e1-5fa00e996a3e
+    $ curl http://127.0.0.1:9090/api/new?jid=test2@test.com
     {
-      "valid": true
+      "jid": "test2@test.com",
+      "end": [
+        "2013-04-04",
+        "03:31:56"
+      ],
+      "started": true,
+      "start": [
+        "2013-03-23",
+        "13:45:17"
+      ],
+      "key": "2b86b2ebe-e7f0-4617-84de-7ef7ab79323a",
+      "error": false,
+      "expired": false,
+      "id": 2
+    }
+
+You need a valid jabber id to make a reservation:
+
+::
+
+    $ curl http://127.0.0.1:9090/api/new?jid=bad_jid
+    {
+      "error_message": "invalid jid",
+      "error": true
+    }
+
+You must always check the "error" field property
+
+
+Check key:
+----------
+
+::
+
+    $ curl http://127.0.0.1:9090/api/check?key=1bde8bac8-f654-42d5-aa6f-558b790d7cc3
+    {
+      "jid": "test@test.com",
+      "end": [
+        "2013-03-23",
+        "13:44:17"
+      ],
+      "started": false,
+      "start": [
+        "2013-03-11",
+        "23:57:38"
+      ],
+      "valid": true,
+      "key": "1bde8bac8-f654-42d5-aa6f-558b790d7cc3",
+      "expired": false,
+      "id": 1
     }
 
 ::
@@ -68,3 +123,5 @@ Check your key:
     {
       "valid": false
     }
+
+You must always check the "valid" field property
