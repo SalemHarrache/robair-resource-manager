@@ -24,7 +24,15 @@ class ProdConfig(DevConfig):
     '''Prod configuration.'''
 
     SQLALCHEMY_ECHO = False
+    # Database
+    DBUSER = "robair"
+    DBPASSWORD = "robair"
+    DBNAME = "robair"
+    DBHOST = "localhost"
 
+    SQLALCHEMY_DATABASE_URI = "postgresql://%s:%s@%s/%s" % (
+        DBUSER, DBPASSWORD, DBHOST, DBNAME)
+    SQLALCHEMY_ECHO = False
     # Debug
     DEBUG = False
     TESTING = False
