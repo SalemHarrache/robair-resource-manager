@@ -198,3 +198,17 @@ footer a {
 footer a:hover, a:focus {
     color: #797979;
 }
+
+.hero-unit {
+    width: 630px;
+    height: 380px;
+    background-color: white;
+}
+
+.hero-unit img.logo {
+    float:right;
+}
+
+.hero-unit h1 {
+    margin-top: 116px;
+}

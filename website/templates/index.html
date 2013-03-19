@@ -1,8 +1,16 @@
 {% extends "_layout.jinja2" %}
 
 {% block content %}
-<div style="text-align:center">
-    <img src="{{ url_for('static', filename='img/robair-logo.png') }}" alt="robair {{ now().year }} logo" />
+
+<div class="hero-unit">
+  <img src="{{ url_for('static', filename='img/robair-logo.png') }}" class="logo" alt="robair {{ now().year }} logo" />
+  <h1>Hi, I'm RobAir !</h1>
+  <p>Nice to meet you :)</p>
+  <p>
+    <a class="btn btn-primary btn-large" href="https://github.com/SalemHarrache/robair-ros-pkg">
+      Download my sources
+    </a>
+  </p>
 </div>
-</div>
+
 {% endblock content %}

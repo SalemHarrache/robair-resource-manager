@@ -12,12 +12,15 @@
 </head>
 
 <body>
+<a href="https://github.com/SalemHarrache/robair-resource-manager">
+  <img style="position: absolute; top: 0; right: 0; border: 0;"
+       src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+</a>
 <section>
 <div class="container">
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li><a href="{{ url_for('admin.index') }}" data-toggle="tab">Admin</a></li>
-    <li><a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013" data-toggle="tab">Présentation</a></li>
+    <li><a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013" data-toggle="tab">About</a></li>
     <li><a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013-RICM5-Suivi" data-toggle="tab">RICM5</a></li>
     <li><a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013-RICM4-Groupe1-Suivi" data-toggle="tab">RICM4 G1</a></li>
     <li><a href="http://air.imag.fr/mediawiki/index.php/RobAIR2013-RICM4-Groupe3-Suivi" data-toggle="tab">RICM4 G2</a></li>
@@ -39,7 +42,8 @@
 </div>
 </section>
 <footer>
-  <a href="/">Robair</a> {{ now().year }}
+  <a href="/">Robair</a> {{ now().year }} |
+  <a href="{{ url_for('admin.index') }}">login</a>
 </footer>
 
 </body>

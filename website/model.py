@@ -42,7 +42,7 @@ class Reservation(db.Model):
     @hybrid_property
     def started(self):
         now = datetime.datetime.now()
-        return self.start >= now
+        return self.start < now
 
     @hybrid_property
     def expired(self):
