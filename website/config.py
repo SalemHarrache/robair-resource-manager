@@ -22,7 +22,7 @@ class DevConfig(object):
 
 class ProdConfig(DevConfig):
     '''Prod configuration.'''
-
+    PORT = 7060
     SQLALCHEMY_ECHO = False
     # Database
     DBUSER = "robair"
